@@ -45,9 +45,13 @@
         function getCharacterPieces(){
             // キャラクター保管所のURLを取得する
             const text_character_url = document.getElementById("character_url").value;
+            if(text_character_url=NULL){
+                console.log("no input Error");
+                return ;
+            }
             console.log(text_character_url);
             // URL の .html を .js に置き換える
-            const jsonfile_url = text_character_url.replace('html', 'js');
+            const jsonfile_url = text_character_url+'.js';
             console.log(jsonfile_url);
 
             var character_json;
@@ -62,7 +66,7 @@
 <body>
     <form action="#">
         <input type="text" id="character_url">
-        <input type="button" onclick="getCharacterPieces()" value="送信">
+        <input type="button" onclick="getCharacterPieces()" value="submit">
     </form>
 </body>
 </html>
