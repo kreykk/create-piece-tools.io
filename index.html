@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charaset=UTF-8" />
+    <style>
+            body{
+                background-color: #fff;
+                color: #444;
+                font-size: 16px;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                line-height:1.42857
+            }
+
+            a.btn-character_url{
+                position: fixed;
+                right: 48px;
+                bottom: 36px;
+                width: 72px;
+                height: 72px;
+                border: #ccd1d9 solid 1px;
+                background: #fff;
+                color: #aab2bd;
+                text-align: center;
+                font-size: 3em;
+                vertical-align: baseline;
+                display: -moz-inline-stack;
+                display: inline-block;
+                vertical-align: middle;
+                *vertical-align: auto;
+                zoom: 1;
+                *display: inline;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                border-radius: 50%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        function getCharacterPieces(){
+            // キャラクター保管所のURLを取得する
+            const text_character_url = document.getElementById("character_url").value;
+            console.log(text_character_url);
+            // URL の .html を .js に置き換える
+            const jsonfile_url = text_character_url.replace('html', 'js');
+            console.log(jsonfile_url);
+
+            var character_json;
+            // json ファイルを変数にいれる
+            $.getJSON(jsonfile_url, (character_json) => {
+                var jsonlist = JSON.parse(character_json);
+                console.log(jsonlist);
+            });
+        }
+    </script>
+</head>
+<body>
+    <form action="#" method="post">
+        <input type="text" id="character_url">
+    </form>
+    <p>
+        <a href="" class="btn-character_url" onclick="getCharacterPieces()" value="送信"></a>
+    </p>
+
+</body>
+</html>
